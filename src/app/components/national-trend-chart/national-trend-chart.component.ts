@@ -1,145 +1,57 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { AndamentoNazionale} from "../../models/andamentoNazionale";
+import { DisplayNumbersService } from 'src/app/services/display-numbers.service';
 
 @Component({
   selector: 'app-national',
   templateUrl: './national-trend-chart.component.html',
   styleUrls: ['./national-trend-chart.component.scss']
 })
-export class NationalTrend {
-  title = 'Angular Charts';
+export class NationalTrend implements OnInit{
+  multi: AndamentoNazionale[];
 
-  view: any[] = [600, 400];
+  view: any[] = [700, 300];
 
-  // options for the chart
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Country';
-  showYAxisLabel = true;
-  yAxisLabel = 'Sales';
-  timeline = true;
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Year';
+  yAxisLabel: string = 'Population';
+  timeline: boolean = true;
 
   colorScheme = {
-    domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB']
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
-  //pie
-  showLabels = true;
+  constructor(private a: DisplayNumbersService) {
+  }
 
-  // data goes here
-  public single = [
-    {
-      "name": "China",
-      "value": 2243772
-    },
-    {
-      "name": "USA",
-      "value": 1126000
-    },
-    {
-      "name": "Norway",
-      "value": 296215
-    },
-    {
-      "name": "Japan",
-      "value": 257363
-    },
-    {
-      "name": "Germany",
-      "value": 196750
-    },
-    {
-      "name": "France",
-      "value": 204617
-    }
-  ];
+  onSelect(data): void {
+    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+  }
 
-  public multi = [
-    {
-      "name": "China",
-      "series": [
-        {
-          "name": "2018",
-          "value": 2243772
-        },
-        {
-          "name": "2017",
-          "value": 1227770
-        }
-      ]
-    },
+  onActivate(data): void {
+    console.log('Activate', JSON.parse(JSON.stringify(data)));
+  }
 
-    {
-      "name": "USA",
-      "series": [
-        {
-          "name": "2018",
-          "value": 1126000
-        },
-        {
-          "name": "2017",
-          "value": 764666
-        }
-      ]
-    },
+  onDeactivate(data): void {
+    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
 
-    {
-      "name": "Norway",
-      "series": [
-        {
-          "name": "2018",
-          "value": 296215
-        },
-        {
-          "name": "2017",
-          "value": 209122
-        }
-      ]
-    },
+  ngOnInit(): void {
+    this.getAndamento();
 
-    {
-      "name": "Japan",
-      "series": [
-        {
-          "name": "2018",
-          "value": 257363
-        },
-        {
-          "name": "2017",
-          "value": 205350
-        }
-      ]
-    },
+  }
 
-    {
-      "name": "Germany",
-      "series": [
-        {
-          "name": "2018",
-          "value": 196750
-        },
-        {
-          "name": "2017",
-          "value": 129246
-        }
-      ]
-    },
+  getAndamento(): void{
+    this.a.getAndamentoNazionale().subscribe(
+      x => {this.multi = x})
 
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "2018",
-          "value": 204617
-        },
-        {
-          "name": "2017",
-          "value": 149797
-        }
-      ]
-    }
-  ];
+  }
 
 }

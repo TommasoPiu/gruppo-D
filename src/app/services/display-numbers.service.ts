@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Regione } from '../models/regione';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Provincia } from '../models/provincia';
+import { AndamentoNazionale} from "../models/andamentoNazionale";
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +12,11 @@ export class DisplayNumbersService {
 
   private regioniUrl = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni.json';
   private provinceUrl = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-province.json';
+  private andamentoNazionale = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json'
   public regioni: Array<Regione>;
   public province: Array<Provincia>;
+  public andamentoNazionele: Array<AndamentoNazionale>
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -26,5 +30,9 @@ export class DisplayNumbersService {
 
   getProvince(): Observable<Provincia[]> {
     return this.http.get<Provincia[]>(this.regioniUrl);
+  }
+
+  getAndamentoNazionale(): Observable<AndamentoNazionale[]>{
+    return this.http.get<AndamentoNazionale[]>(this.andamentoNazionale);
   }
 }

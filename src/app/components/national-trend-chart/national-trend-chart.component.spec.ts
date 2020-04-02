@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NationalTrendChartComponent } from './national-trend-chart.component';
+import { NationalTrend } from './national-trend-chart.component';
 
-describe('NationalTrendChartComponent', () => {
-  let component: NationalTrendChartComponent;
-  let fixture: ComponentFixture<NationalTrendChartComponent>;
+describe('NationalTrend', () => {
+  let component: NationalTrend;
+  let fixture: ComponentFixture<NationalTrend>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NationalTrendChartComponent ]
+      declarations: [ NationalTrend ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NationalTrendChartComponent);
+    fixture = TestBed.createComponent(NationalTrend);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

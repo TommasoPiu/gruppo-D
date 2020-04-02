@@ -13,7 +13,7 @@ import { NationalTrend } from './components/national-trend-chart/national-trend-
 @NgModule({
   declarations: [
     AppComponent,
-    NationalTrend
+    NationalTrend,
     AppComponent,
     RegioniProvinceComponent
   ],
@@ -21,7 +21,7 @@ import { NationalTrend } from './components/national-trend-chart/national-trend-
     BrowserModule,
     AppRoutingModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
   ],

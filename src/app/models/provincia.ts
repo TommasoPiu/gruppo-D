@@ -3,7 +3,7 @@ export interface Provincia {
     stato: string;
     codice_regione: Number;
     denominazione_regione: string;
-    codice_provincia: 69;
+    codice_provincia: Number;
     denominazione_provincia: string;
     sigla_provincia: string;
     lat: string;

@@ -17,7 +17,7 @@ export class GraficiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+  
   }
 
   populateAndamentoNazionale(): void{

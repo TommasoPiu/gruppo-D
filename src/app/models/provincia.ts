@@ -11,4 +11,5 @@ export interface Provincia {
     totale_casi: number;
     note_it: string;
     note_en: string;
-} 
+}
+

@@ -28,7 +28,11 @@ export class NotesComponent implements OnInit {
   }
 
   getNotes(): void{
-    this.noteService.getNotes().subscribe(note => this.note = note);
+    this.noteService.getNotes().subscribe(note => {
+      note.sort((a, b) => {
+          return a < b ? -1 : 1;
+       });
+      this.note = note;
+   });
   }
-
 }

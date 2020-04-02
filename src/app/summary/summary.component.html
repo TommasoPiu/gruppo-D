@@ -1,0 +1,16 @@
+
+<div>
+<mat-list *ngFor="let item of andamentoNazionale">
+<mat-list-item >
+    <mat-label>totale_positivi</mat-label>
+    <input matInput placeholder="" value= {{item.totale_positivi}}>
+    <mat-label>dimessi_guariti</mat-label>
+    <input matInput placeholder="" value={{item.dimessi_guariti}}>
+    <mat-label>deceduti</mat-label>
+    <input matInput placeholder="" value={{item.deceduti}}>
+    <mat-label>totale_casi</mat-label>
+    <input matInput placeholder="" value={{item.totale_casi}}>
+    <!--div mat-line>{{item.totale_positivi}}</div-->
+
+ </mat-list-item>
+</mat-list>

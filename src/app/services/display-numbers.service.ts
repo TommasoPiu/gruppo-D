@@ -29,7 +29,7 @@ export class DisplayNumbersService {
   }
 
   getProvince(): Observable<Provincia[]> {
-    return this.http.get<Provincia[]>(this.regioniUrl);
+    return this.http.get<Provincia[]>(this.provinceUrl);
   }
 
   getAndamentoNazionale(): Observable<AndamentoNazionale[]>{

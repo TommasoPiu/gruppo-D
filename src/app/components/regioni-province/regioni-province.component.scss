@@ -1,7 +1,20 @@
-table{
-    width: 25%;
+#tab-group{
+    width: 300px;
+    max-height: 400px;
 }
 
-div{
-    max-height: 400px;
+#mat-cellR{
+    font-size: large;
+}
+
+#mat-cellP{
+    font-size: large;
+}
+
+#mat-tabR{
+    color: black;
+}
+
+#mat-tabP{
+    color: black;
 }

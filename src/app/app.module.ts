@@ -16,10 +16,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {FormsModule} from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs'
 import { SummaryComponent } from './components/summary/summary.component';
-import { GraficiComponent} from "./components/grafici/grafici.component";
-import { NotesComponent} from "./components/notes/notes.component";
-import { TotaliPositiviComponent} from "./components/grafici/variazioni/totali-positivi.component";
-
+import { GraficiComponent} from './components/grafici/grafici.component';
+import { NotesComponent} from './components/notes/notes.component';
+import { TotaliPositiviComponent} from './components/grafici/variazioni/totali-positivi.component';
+import { StoreModule } from '@ngrx/store';
+import { notesReducer } from './Redux/notes.reducers';
+import { NotesEffects } from './Redux/notes.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { TotaliPositiviComponent} from "./components/grafici/variazioni/totali-p
     MatExpansionModule,
     FormsModule,
     MatTabsModule,
-
+    StoreModule.forRoot({ nota: notesReducer }),
+    EffectsModule.forRoot([NotesEffects])
 
 
   ],

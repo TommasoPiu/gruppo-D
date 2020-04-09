@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DisplayAndamentoNazionaleService } from 'src/app/services/display-andamento-nazionale.service';
-import { AndamentoNazionale } from '../models/andamento-nazionale';
+import { AndamentoNazionale } from '../../models/andamento-nazionale';
 import { FormControl } from '@angular/forms';
 
 @Component({

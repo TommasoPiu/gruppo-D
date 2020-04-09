@@ -15,7 +15,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {FormsModule} from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs'
-import { SummaryComponent } from './summary/summary.component';
+import { SummaryComponent } from './components/summary/summary.component';
 import { GraficiComponent} from "./components/grafici/grafici.component";
 import { NotesComponent} from "./components/notes/notes.component";
 import { TotaliPositiviComponent} from "./components/grafici/variazioni/totali-positivi.component";

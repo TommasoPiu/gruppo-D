@@ -17,11 +17,14 @@ export class RegioniProvinceComponent implements OnInit {
   displayedColumnsR: string[] = ['denominazione_regione'];
   displayedColumnsP: string[] = ['denominazione_provincia'];
 
+  color: string;
+
   constructor(private datiSvervice: DisplayNumbersService) { }
 
   ngOnInit(): void {
     this.getRegioni();
     this.getProvince();
+    this.color = 'blue';
   }
 
   getRegioni(): void {
@@ -30,6 +33,11 @@ export class RegioniProvinceComponent implements OnInit {
 
   getProvince(): void {
     this.datiSvervice.getProvince().subscribe(province => this.province = province);
+  }
+
+  changeColor(color: string): void {
+    this.color = color;
+    console.log(this.color);
   }
 
 

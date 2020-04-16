@@ -23,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
 import { notesReducer } from './Redux/notes.reducers';
 import { NotesEffects } from './Redux/notes.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EffectsModule } from '@ngrx/effects';
     SummaryComponent,
     GraficiComponent,
     NotesComponent,
-    TotaliPositiviComponent
+    TotaliPositiviComponent,
+    HighlightDirective
 
   ],
   imports: [

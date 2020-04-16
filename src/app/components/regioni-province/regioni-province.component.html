@@ -4,7 +4,7 @@
             <table mat-table [dataSource]="regioni" class="mat-elevation-z8">
                 <ng-container matColumnDef="denominazione_regione">
                     <th mat-header-cell *matHeaderCellDef id="mat-cellR">Totale casi per Regione</th>
-                    <td mat-cell *matCellDef="let element"> {{element.denominazione_regione}} </td>
+                    <td mat-cell *matCellDef="let element" appHighlight> {{element.denominazione_regione}} </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsR"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumnsR;"></tr>
@@ -16,7 +16,7 @@
             <table mat-table [dataSource]="province" class="mat-elevation-z8 ">
                 <ng-container matColumnDef="denominazione_provincia">
                     <th mat-header-cell *matHeaderCellDef id="mat-cellP">Totale casi per Provincia</th>
-                    <td mat-cell *matCellDef="let element"> {{element.denominazione_provincia}} </td>
+                    <td mat-cell *matCellDef="let element" appHighlight> {{element.denominazione_provincia}} </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsP"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumnsP;"></tr>

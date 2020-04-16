@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import {MatFormFieldModule, MatFormFieldAppearance} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { NotesService } from 'src/app/services/notes.service';
@@ -9,30 +9,46 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable } from 'rxjs';
+import { Observable, Subscription, Subject } from 'rxjs';
 import { StoreModule, Store, select } from '@ngrx/store';
-import { notesAction } from 'src/app/Redux/notes.actions';
-import { selectFeatureState } from 'src/app/Redux';
+import {filter, first, takeUntil, finalize} from 'rxjs/operators';
+import { selectNote, AppState } from '../../Redux/index';
+import { executeNotesAction } from '../../Redux/notes.actions';
 
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent implements OnInit, OnDestroy {
 
 
 /*   note: Notes[]; */
   note: Notes[];
+  private takeUntilSubject: Subject<void> = new Subject<void>();
 
-
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.dispatch({ type: notesAction.type });
-    // tslint:disable-next-line: deprecation
-    this.store.pipe(select(selectFeatureState)).subscribe(note => this.note = note.inputNota);
-    console.log('LE NOTE SONO ', this.note);
+    this.store.pipe(
+      select(selectNote),
+      filter(note => !!note && note.length > 0),
+      finalize(() => console.log('Subscription chiusa')),
+      takeUntil(this.takeUntilSubject)
+    ).subscribe(note => {
+      this.note = note;
+      console.log('LE NOTE SONO ', this.note);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.takeUntilSubject.next();
+    this.takeUntilSubject.complete();
+    this.takeUntilSubject = undefined;
+  }
+
+  refreshNotes() {
+    this.store.dispatch(executeNotesAction());
   }
 
   // getNotes(): void{

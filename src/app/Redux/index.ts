@@ -1,19 +1,12 @@
 import { createSelector } from '@ngrx/store';
-import { Notes } from '../models/notes';
-
-export interface FeatureState {
-  nota: {
-    flagNotes: boolean,
-    inputNota: Notes[]
-  };
-}
+import {NoteState} from './notes.reducers';
 
 export interface AppState {
-  feature: FeatureState;
+  nota: NoteState;
 }
 
-export const selectFeature = (state: AppState) => state.feature;
-export const selectFeatureState = createSelector(
+export const selectFeature = (state: AppState) => state.nota;
+export const selectNote = createSelector(
   selectFeature,
-  (state: FeatureState) => state.nota
+  (state: NoteState) => state.notes
 );

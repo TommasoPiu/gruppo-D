@@ -1,14 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
-import { notesAction, getNotesAction} from './notes.actions';
-import { state } from '@angular/animations';
 import { Notes } from 'src/app/models/notes';
+import { storeNotesAction } from './notes.actions';
 
-export const initialState = { flagNotes: false, inputNotes: []};
+export interface NoteState {
+  notes: Notes[];
+}
+
+export const initialState: NoteState = { notes: []};
 
 // tslint:disable-next-line: variable-name
 const _NotesReducer = createReducer(initialState,
-
-    on(getNotesAction, (state, {inputN}) => ({ ...state, inputNotes: inputN }))
+  on(storeNotesAction, (state, {payload}) => {
+      console.log('Reducer: ' + payload);
+      return {...state, notes: payload};
+    }
+  )
   );
 
 
@@ -16,5 +22,3 @@ const _NotesReducer = createReducer(initialState,
 export function notesReducer(state, action) {
     return _NotesReducer(state, action);
   }
-
-

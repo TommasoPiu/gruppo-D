@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "gruppo-D"
+  "defaultProject": "gruppo-D",
+  "cli": {
+    "analytics": "cdf68ca8-e99d-4176-9e28-94fecd93f48c"
+  }
 }

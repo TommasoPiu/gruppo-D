@@ -1,4 +1,6 @@
-<mat-accordion>
+<div class="notesW">
+  <div *ngIf="note">
+  <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -7,6 +9,11 @@
         <mat-panel-description>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p *ngFor="let item of note">{{item.data + " - " + item.regione + " - " + item.note}}</p>
+      <p *appNewNgFor="let item of note; let i = index;">{{item.data + " - " + item.regione + " - " + item.note}}</p>
+      <!-- <p *ngFor="let item of note">{{item.data + " - " + item.regione + " - " + item.note}}</p> -->
+      
+        <!-- <p *ngFor="let item of note">{{item.data + " - " + item.regione + " - " + item.note}}</p> -->
     </mat-expansion-panel>
   </mat-accordion>
+</div>
+</div>

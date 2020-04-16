@@ -2,10 +2,10 @@ import { createSelector } from '@ngrx/store';
 import {NoteState} from './notes.reducers';
 
 export interface AppState {
-  nota: NoteState;
+  notes: NoteState;
 }
 
-export const selectFeature = (state: AppState) => state.nota;
+export const selectFeature = (state: AppState) => state.notes;
 export const selectNote = createSelector(
   selectFeature,
   (state: NoteState) => state.notes

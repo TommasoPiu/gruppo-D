@@ -24,6 +24,7 @@ import { notesReducer } from './Redux/notes.reducers';
 import { NotesEffects } from './Redux/notes.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { HighlightDirective } from './directives/highlight.directive';
+import { NewNgForDirective } from './directives/new-ng-for.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     GraficiComponent,
     NotesComponent,
     TotaliPositiviComponent,
-    HighlightDirective
+    HighlightDirective,
+    NewNgForDirective
 
   ],
   imports: [
@@ -51,7 +53,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     MatExpansionModule,
     FormsModule,
     MatTabsModule,
-    StoreModule.forRoot({ nota: notesReducer }),
+    StoreModule.forRoot({ notes: notesReducer }),
     EffectsModule.forRoot([NotesEffects])
 
 

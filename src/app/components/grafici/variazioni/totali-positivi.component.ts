@@ -14,9 +14,9 @@ export class TotaliPositiviComponent implements OnInit {
   @Input() andamento: AndamentoNazionale[];
 
   multi: any[];
-  view: any[] = [700, 300];
+  view: any[] = [500, 300];
 
-  legend: boolean = true;
+  legend: boolean = false;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;

@@ -39,6 +39,7 @@ export class NotesComponent implements OnInit, OnDestroy {
       this.note = note;
       console.log('LE NOTE SONO ', this.note);
     });
+    this.refreshNotes();
   }
 
   ngOnDestroy(): void {

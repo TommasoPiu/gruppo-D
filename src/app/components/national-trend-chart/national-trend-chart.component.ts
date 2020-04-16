@@ -4,6 +4,7 @@ import { DisplayNumbersService } from 'src/app/services/display-numbers.service'
 import {of} from "rxjs";
 import {filter} from "rxjs/operators";
 import deleteProperty = Reflect.deleteProperty;
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-national',
@@ -79,27 +80,37 @@ export class NationalTrend implements OnInit{
       ]
     }
   ];
-  res = [{"name":"totale_positivi",
-          "series": []},
-          {"name":"dimessi_guariti",
-          "series":[]},
-          {"name":"deceduti",
-            "series":[]}];
+  res = [
+    {
+      "name":"Totale positivi",
+      "series": []
+    },
+    {
+      "name":"Dimessi guariti",
+      "series":[]
+    },
+    {
+      "name":"Deceduti",
+      "series":[]
+    }
+  ];
+
+  show = false;
 
 
 
-  view: any[] = [700, 300];
+  view: any[] = [500, 300];
 
   // options
-  legend: boolean = true;
+  legend: boolean = false;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Persone';
-  yAxisLabel: string = 'Giorni';
+  xAxisLabel: string = 'Giorni';
+  yAxisLabel: string = 'Persone';
   timeline: boolean = true;
 
   colorScheme = {
@@ -124,14 +135,21 @@ export class NationalTrend implements OnInit{
     this.setAndamento();
   }
 
-  setAndamento(): void{
+  setAndamento(): void {
     this.service.getAndamentoNazionale().subscribe(
       x => {
-        x.forEach(value => {
-          this.res[0].series.push({"name":value.data.toString(),"value":value.deceduti});
-          this.res[1].series.push({"name":value.data.toString(),"value":value.nuovi_positivi});
-          this.res[2].series.push({"name":value.data.toString(),"value":value.dimessi_guariti});
-        }); console.log(this.res); console.log(this.result) });
+        x.forEach(val => {
+          const newDate = formatDate(val.data, 'dd/MM', 'en-US');
+          this.res[0].series.push({name: newDate, value: val.deceduti});
+          this.res[1].series.push({name: newDate, value: val.nuovi_positivi});
+          this.res[2].series.push({name: newDate, value: val.dimessi_guariti});
+        });
+        //setTimeout(() => {
+          console.log(this.res); console.log(this.result);
+        //});
+      });
+      setTimeout(() => {this.show = true;},2000);
+
   }
 
 }
